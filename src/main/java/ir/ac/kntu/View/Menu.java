@@ -11,10 +11,11 @@ public class Menu {
             System.out.println("To exit the program , enter Exit");
             String input = scanner.nextLine();
 
-            if (input.trim().equals("Exit"))
-                System.exit(0);
-
-
+            switch (input.trim()) {
+                case "Exit" -> System.exit(0);
+                case "Buy" , "Sell" -> (new ProductsMenu()).run(scanner);
+                default -> System.out.println("Invalid command !");
+            }
         }
     }
 
