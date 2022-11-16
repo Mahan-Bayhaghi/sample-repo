@@ -39,22 +39,22 @@ public class ProductsMenu extends Menu{
             else if ((matcher=categorizePattern.matcher(input)).matches())
                 ProductController.categorizeByType(matcher.group("typeOfProduct")) ;
 
-            else if ((matcher=sortByPricePattern.matcher(input)).matches())
-                ProductController.sortByPrice(input.replace("Sort by price ")) ;
+            else if (sortByPricePattern.matcher(input).matches())
+                ProductController.sortByPrice(input.replace("Sort by price " , "")) ;
 
-            else if ((matcher=sortByExpirationDatePattern.matcher(input)).matches())
-                ProductController.sortByExpirationDate(input.replace("Sort by expiration date ")) ;
+            else if (sortByExpirationDatePattern.matcher(input).matches())
+                ProductController.sortByExpirationDate(input.replace("Sort by expiration date " , "")) ;
 
-            else if ((matcher=sortByQuantityPattern.matcher(input)).matches())
+            else if (sortByQuantityPattern.matcher(input).matches())
                 ProductController.sortByQuantity() ;
 
-            else if ((matcher=sortOutOfDatePattern.matcher(input)).matches())
+            else if (sortOutOfDatePattern.matcher(input).matches())
                 ProductController.showOutOfDateGoods() ;
 
-            else if ((matcher=showTotalValuePattern.matcher(input)).matches())
+            else if (showTotalValuePattern.matcher(input).matches())
                 ProductController.showTotalValue() ;
 
-            else if ((matcher=showAllGoodsPattern.matcher(input)).matches())
+            else if (showAllGoodsPattern.matcher(input).matches())
                 ProductController.showAllGoods() ;
 
             else
