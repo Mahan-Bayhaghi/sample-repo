@@ -1,6 +1,7 @@
 package ir.ac.kntu.View;
 
 import ir.ac.kntu.Controllers.ProductController;
+import ir.ac.kntu.JsonGenerator;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -9,16 +10,16 @@ import java.util.regex.Pattern;
 public class ProductsMenu extends Menu{
 
     Pattern backPattern = Pattern.compile("^\\s*Back\\s*$") ;
-    Pattern categorizePattern = Pattern.compile("^\\s*Categorize by type (?<typeOfProduct>\\w+)\\s*$") ;
+    Pattern categorizePattern = Pattern.compile("^\\s*Categorize by type (diary|protein|junkFood|sanitary|drink)\\s*$") ;
     Pattern sortByPricePattern = Pattern.compile("^Sort by price (increasing|decreasing)$") ;
     Pattern sortByExpirationDatePattern = Pattern.compile("^Sort by expiration date (increasing|decreasing)$") ;
     Pattern sortByQuantityPattern = Pattern.compile("^\\s*Sort by quantity (increasing|decreasing)\\s*$") ;
-    Pattern sortOutOfDatePattern = Pattern.compile("^\\s*Sort out of date goods\\s*$") ;
+    Pattern sortOutOfDatePattern = Pattern.compile("^\\s*Show out of date goods\\s*$") ;
     Pattern showTotalValuePattern = Pattern.compile("^\\s*Show total value\\s*$") ;
     Pattern showAllGoodsPattern = Pattern.compile("^\\s*Show all goods\\s*$") ;
 
     @Override
-    public void run(Scanner scanner) {
+    public void run(Scanner scanner , JsonGenerator jsonGenerator) {
         while (true){
             System.out.println("Commands list :");
             System.out.println("Back                                            : go to welcome menu");
@@ -37,7 +38,7 @@ public class ProductsMenu extends Menu{
             if (backPattern.matcher(input).matches()) return;
 
             else if ((matcher=categorizePattern.matcher(input)).matches())
-                ProductController.categorizeByType(matcher.group("typeOfProduct")) ;
+                ProductController.categorizeByType(input.replace("Categorize by type " , "")) ;
 
             else if (sortByPricePattern.matcher(input).matches())
                 ProductController.sortByPrice(input.replace("Sort by price " , "")) ;
@@ -58,7 +59,7 @@ public class ProductsMenu extends Menu{
                 ProductController.showAllGoods() ;
 
             else
-                System.out.println("Invalid command jfkdklj!");
+                System.out.println("Invalid command !");
 
         }
     }

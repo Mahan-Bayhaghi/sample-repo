@@ -13,8 +13,8 @@ public class Product {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
-        this.productionDate = productionDate;
-        this.expirationDate = expirationDate;
+        this.productionDate = correctDateFormat(productionDate);
+        this.expirationDate = correctDateFormat(expirationDate);
     }
 
     public String getTypeOfProduct() {
@@ -70,5 +70,12 @@ public class Product {
         System.out.printf("%s :\n\tprice : %d\n\tquantity : %d\n\tproduction date : %s\n\texpiration date : %s\n"
                 , product.getProductName() , product.getPrice() , product.getQuantity()
                 , product.getProductionDate() , product.getExpirationDate()) ;
+    }
+
+    public String  correctDateFormat (String date){
+        String dates[] = date.split("-") ;
+        if (dates[1].length()==1) dates[1] = '0' + dates[1];
+        if (dates[2].length()==1) dates[2] = '0' + dates[2];
+        return (dates[0] + "-" + dates[1] + "-" + dates[2]) ;
     }
 }

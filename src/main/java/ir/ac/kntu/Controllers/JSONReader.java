@@ -20,12 +20,9 @@ public class JSONReader {
     public static final String[] sanitaryGoodsList = {"handWash", "shampoo", "tissue", "faceWash", "bodyWash", "washingPowder"};
     public static final String[] junkFoodGoodsList = {"chips", "pofak", "tokhme", "popCorn", "lavashak", "chocolate"};
 
-//    private static final Pattern productPattern =
-//            Pattern.compile(
-//                    "(?<nameOfProduct>\\w+)\\s*:\\s*price\\s*:\\s*(?<price>\\d+)\\s*quantity\\s*:\\s*(?<quantity>\\d+)\\s*productionDate\\s*:\\s*(?<productionDate>\\d{4}-\\d{1,2}-\\d{1,2})\\s*expirationDate\\s*:\\s*(?<expirationDate>\\d{4}-\\d{1,2}-\\d{1,2})\\s*") ;
-
     private static final Pattern productPattern =
             Pattern.compile("(?<nameOfProduct>\\w+) : price : (?<price>\\d+) quantity : (?<quantity>\\d+) productionDate : (?<productionDate>\\d{4}-\\d{1,2}-\\d{1,2}) expirationDate : (?<expirationDate>\\d{4}-\\d{1,2}-\\d{1,2})") ;
+
     public static ArrayList<Product> readAllProducts (String jsonString){
         jsonString = trimString(jsonString) ;
         System.out.println(jsonString);
