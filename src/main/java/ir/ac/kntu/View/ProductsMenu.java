@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 public class ProductsMenu extends Menu{
 
     Pattern backPattern = Pattern.compile("^\\s*Back\\s*$") ;
-    Pattern categorizePattern = Pattern.compile("^\\s*Categorize by type <?typeOfProduct>\\s*$") ;
-    Pattern sortByPricePattern = Pattern.compile("^Sort by price (increasing | decresing)$") ;
-    Pattern sortByExpirationDatePattern = Pattern.compile("^Sort by expiration date (increasing | decreasing)$") ;
-    Pattern sortByQuantityPattern = Pattern.compile("^\\s*Sort by quantity\\s*$") ;
+    Pattern categorizePattern = Pattern.compile("^\\s*Categorize by type (?<typeOfProduct>\\w+)\\s*$") ;
+    Pattern sortByPricePattern = Pattern.compile("^Sort by price (increasing|decreasing)$") ;
+    Pattern sortByExpirationDatePattern = Pattern.compile("^Sort by expiration date (increasing|decreasing)$") ;
+    Pattern sortByQuantityPattern = Pattern.compile("^\\s*Sort by quantity (increasing|decreasing)\\s*$") ;
     Pattern sortOutOfDatePattern = Pattern.compile("^\\s*Sort out of date goods\\s*$") ;
     Pattern showTotalValuePattern = Pattern.compile("^\\s*Show total value\\s*$") ;
     Pattern showAllGoodsPattern = Pattern.compile("^\\s*Show all goods\\s*$") ;
@@ -25,7 +25,7 @@ public class ProductsMenu extends Menu{
             System.out.println("Categorize by type <typeOfProduct>              : categorizing all goods by their type");
             System.out.println("Sort by price <increasing|decreasing>           : sort all goods in increasing or decreasing order");
             System.out.println("Sort by expiration date <increasing|decreasing> : sort all goods in increasing or decreasing order");
-            System.out.println("Sort by quantity                                : sort all goods based on their quantity");
+            System.out.println("Sort by quantity <increasing|decreasing>        : sort all goods based on their quantity");
             System.out.println("Show out of date goods                          : list of all out of date goods");
             System.out.println("Show total value                                : compute total value of receipt");
             System.out.println("Show all goods                                  : show all goods in readable form");
@@ -46,7 +46,7 @@ public class ProductsMenu extends Menu{
                 ProductController.sortByExpirationDate(input.replace("Sort by expiration date " , "")) ;
 
             else if (sortByQuantityPattern.matcher(input).matches())
-                ProductController.sortByQuantity() ;
+                ProductController.sortByQuantity(input.replace("Sort by quantity " , "")) ;
 
             else if (sortOutOfDatePattern.matcher(input).matches())
                 ProductController.showOutOfDateGoods() ;
@@ -58,7 +58,7 @@ public class ProductsMenu extends Menu{
                 ProductController.showAllGoods() ;
 
             else
-                System.out.println("Invalid command !");
+                System.out.println("Invalid command jfkdklj!");
 
         }
     }

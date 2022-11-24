@@ -64,4 +64,11 @@ public class Product {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    public void printOut() {
+        Product product = this ;
+        System.out.printf("%s :\n\tprice : %d\n\tquantity : %d\n\tproduction date : %s\n\texpiration date : %s\n"
+                , product.getProductName() , product.getPrice() , product.getQuantity()
+                , product.getProductionDate() , product.getExpirationDate()) ;
+    }
 }

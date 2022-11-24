@@ -13,12 +13,12 @@ import java.util.stream.Stream;
 
 public class JSONReader {
 
-    static final String[] typeList = {"junkFood", "drink", "diary", "sanitary", "protein"};
-    static final String[] proteinGoodsList = {"beef", "chicken", "turkey", "sausage", "fish", "egg"};
-    static final String[] diaryGoodsList = {"milk", "cheese", "yogurt", "cream", "dough", "Curd"};
-    static final String[] drinkGoodsList = {"coke", "hype", "delester", "hotChocolate", "coffee", "tea"};
-    static final String[] sanitaryGoodsList = {"handWash", "shampoo", "tissue", "faceWash", "bodyWash", "washingPowder"};
-    static final String[] junkFoodGoodsList = {"chips", "pofak", "tokhme", "popCorn", "lavashak", "chocolate"};
+    public static final String[] typeList = {"junkFood", "drink", "diary", "sanitary", "protein"};
+    public static final String[] proteinGoodsList = {"beef", "chicken", "turkey", "sausage", "fish", "egg"};
+    public static final String[] diaryGoodsList = {"milk", "cheese", "yogurt", "cream", "dough", "Curd"};
+    public static final String[] drinkGoodsList = {"coke", "hype", "delester", "hotChocolate", "coffee", "tea"};
+    public static final String[] sanitaryGoodsList = {"handWash", "shampoo", "tissue", "faceWash", "bodyWash", "washingPowder"};
+    public static final String[] junkFoodGoodsList = {"chips", "pofak", "tokhme", "popCorn", "lavashak", "chocolate"};
 
 //    private static final Pattern productPattern =
 //            Pattern.compile(

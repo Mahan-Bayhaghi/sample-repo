@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import java.time.format.DateTimeFormatter ;
 import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
 
 public class ProductController {
     public static String currentReceipt = "" ;
@@ -28,16 +30,54 @@ public class ProductController {
     }
 
     public static void categorizeByType(String typeOfProduct){
-
+        if (List.of(JSONReader.typeList).contains(typeOfProduct)) {
+            System.out.println("Invalid type of product !");
+            return;
+        }
+        System.out.println("Category " + typeOfProduct + " :");
+        for (Product receiptProduct : receiptProducts) {
+            if (receiptProduct.getTypeOfProduct().equals(typeOfProduct.trim()))
+                receiptProduct.printOut();
+        }
     }
 
-    public static void sortByPrice(String sort_by_price_) {
+    public static void sortByPrice(String sortType) {
+        sortType = sortType.trim();
+        if (sortType.contains("increasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getPrice));
+        } else if (sortType.contains("decreasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getPrice).reversed());
+        } else {
+            System.out.println("Invalid command !");
+            return;
+        }
+        showAllGoods();
     }
 
-    public static void sortByExpirationDate(String sort_by_expiration_date_) {
+    public static void sortByExpirationDate(String sortType) {
+        sortType = sortType.trim();
+        if (sortType.contains("increasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getExpirationDate));
+        } else if (sortType.contains("decreasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getExpirationDate).reversed());
+        } else {
+            System.out.println("Invalid command !");
+            return;
+        }
+        showAllGoods();
     }
 
-    public static void sortByQuantity() {
+    public static void sortByQuantity(String sortType) {
+        sortType = sortType.trim();
+        if (sortType.contains("increasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getQuantity));
+        } else if (sortType.contains("decreasing")){
+            receiptProducts.sort(Comparator.comparing(Product::getQuantity).reversed());
+        } else {
+            System.out.println("Invalid command !");
+            return;
+        }
+        showAllGoods();
     }
 
     public static void showOutOfDateGoods() {
@@ -54,10 +94,6 @@ public class ProductController {
     }
 
     public static void showAllGoods() {
-        for (Product product : receiptProducts){
-            System.out.printf("%s :\n\tprice : %d\n\tquantity : %d\n\tproduction date : %s\n\texpiration date : %s\n"
-                    , product.getProductName() , product.getPrice() , product.getQuantity()
-                    , product.getProductionDate() , product.getExpirationDate()) ;
-        }
+        for (Product product : receiptProducts) product.printOut();
     }
 }
