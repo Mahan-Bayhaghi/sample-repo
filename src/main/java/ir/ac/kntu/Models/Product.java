@@ -1,14 +1,14 @@
 package ir.ac.kntu.Models;
 
 public class Product {
-    TypeOfProduct typeOfProduct ;
+    String typeOfProduct ;
     String productName ;
     int price ;
     int quantity ;
     String productionDate ;
     String expirationDate ;
 
-    public Product(TypeOfProduct typeOfProduct, String productName, int price, int quantity, String productionDate, String expirationDate) {
+    public Product(String typeOfProduct, String productName, int price, int quantity, String productionDate, String expirationDate) {
         this.typeOfProduct = typeOfProduct;
         this.productName = productName;
         this.price = price;
@@ -17,11 +17,11 @@ public class Product {
         this.expirationDate = expirationDate;
     }
 
-    public TypeOfProduct getTypeOfProduct() {
+    public String getTypeOfProduct() {
         return typeOfProduct;
     }
 
-    public void setTypeOfProduct(TypeOfProduct typeOfProduct) {
+    public void setTypeOfProduct(String  typeOfProduct) {
         this.typeOfProduct = typeOfProduct;
     }
 
